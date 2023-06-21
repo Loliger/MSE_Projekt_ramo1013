@@ -27,7 +27,7 @@ Die *monomorphization Methode* um Generics zu übersetzen funktioniert für alle
 Dies erfordert natürlich einen deutlich größeren Aufwand, umso mehr Datentypen wir mit den Generics abdecken.
 
 ### 2. Generic translation Methode
-Die *generic translation* Methode funktioniert bei dem "node" Beispiel, da wir hier nur maximal den Wert des Knotens lesen und sonst nichts. Dies funktioniert, da *interface{}* das leere Interface darstellt, welches keine Methoden hat. Für structural subtyping müssen alle Methoden des Interface für den Datentyp implementiert sein. Da alle Datentype mindestens keine Methode implementieren erfüllen sie alle die Vorraussetzung und sind somit ein struktural subtyp von *interface{}*.
+Die *generic translation* Methode funktioniert bei dem "node" Beispiel, da wir hier nur maximal den Wert des Knotens lesen und sonst nichts. Dies funktioniert, da *interface{}* das leere Interface darstellt, welches keine Methoden hat. Für structural subtyping müssen alle Methoden des Interface für den Datentyp implementiert sein. Da alle Datentype mindestens keine Methode implementieren, erfüllen sie alle die Vorraussetzung und sind somit ein struktural subtyp von *interface{}*.
 
 Für das Beispiel "sum" funktioniert das ganze auch. Zunächst müssen die Eingabe Arrays umgewandelt werden in Arrays vom Typ *interface{}*. Dann gibt es einen Fehler, da auf *interface{}* die Addition nicht definiert ist und der Datentyp der Variable *interface{}* ist und nicht der Typ, welcher übergeben wurde. An dieser Stelle müssen wir *Type Assertions* verwenden:
 
