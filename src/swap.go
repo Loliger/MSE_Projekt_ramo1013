@@ -8,9 +8,29 @@ func Swap[T any](x *T, y *T) {
 
 // gerneric translation
 func SwapGT(x *interface{}, y *interface{}) {
-	tmp := *x
-	*x = *y
-	*y = tmp
+	switch (*x).(type) {
+	case int:
+		_, ok := (*y).(int)
+		if ok {
+			tmp := *x
+			*x = *y
+			*y = tmp
+		}
+	case bool:
+		_, ok := (*y).(bool)
+		if ok {
+			tmp := *x
+			*x = *y
+			*y = tmp
+		}
+	case string:
+		_, ok := (*y).(string)
+		if ok {
+			tmp := *x
+			*x = *y
+			*y = tmp
+		}
+	}
 }
 
 // monomorphization

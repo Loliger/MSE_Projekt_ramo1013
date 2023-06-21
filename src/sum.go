@@ -13,16 +13,22 @@ func Sum[T int | float32](xs []T) T {
 }
 
 // gerneric translation
+
 func SumGT(xs []interface{}) interface{} {
 	var x interface{}
-	x = 0
-	for _, v := range xs {
-
-		x = x + v
+	switch xs[0].(type) {
+	case int:
+		x = 0
+		for _, v := range xs {
+			x = x.(int) + v.(int)
+		}
+	case float32:
+		x = float32(0)
+		for _, v := range xs {
+			x = x.(float32) + v.(float32)
+		}
 	}
-
 	return x
-
 }
 
 // monomorphization
@@ -33,7 +39,6 @@ func SumMMInt(xs []int) int {
 
 		x = x + v
 	}
-
 	return x
 }
 
@@ -44,6 +49,5 @@ func SumMMFloat(xs []float32) float32 {
 
 		x = x + v
 	}
-
 	return x
 }
